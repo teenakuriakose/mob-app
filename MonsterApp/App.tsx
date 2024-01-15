@@ -25,6 +25,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import LanguageSelect from './src/features/languageSelection/LanguageSelection';
 
 
 const App: () => Node = () => {
@@ -45,6 +46,7 @@ const App: () => Node = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
          <Text style={styles.highlight}>Monster App</Text>
+         <LanguageSelect />
         </View>
       </ScrollView>
     </SafeAreaView>
