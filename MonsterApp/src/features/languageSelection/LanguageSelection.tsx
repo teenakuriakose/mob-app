@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import i18next from 'i18next';
+import {useDispatch, useSelector} from 'react-redux';
+import * as LanguageActions from './store/actions';
 
 const LanguageSelect = () => {
   const {t} = useTranslation();
@@ -12,7 +14,10 @@ const LanguageSelect = () => {
     // Add more languages as needed
   ];
   const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const dispatch = useDispatch();
+  const languageState = useSelector(state => state.languageSelection);
 
+  console.log('teena', languageState);
   return (
     <View style={styles.lang}>
       <Text style={styles.sTitle1}> {t('login')}</Text>
@@ -56,7 +61,6 @@ const LanguageSelect = () => {
           }}>
           <Text
             style={{
-              fontFamily: 'Manrope',
               fontStyle: 'normal',
 
               color: '#FF5757',
@@ -68,7 +72,7 @@ const LanguageSelect = () => {
         <TouchableOpacity
           onPress={() => {
             i18next.changeLanguage(selectedLanguage);
-            console.log("selectedLanguage", selectedLanguage)
+            dispatch(LanguageActions.selectLanguage(selectedLanguage));
           }}
           style={{
             width: 150,
@@ -82,7 +86,7 @@ const LanguageSelect = () => {
           <Text
             style={{
               color: '#F7F9FA',
-              fontFamily: 'Manrope',
+
               fontStyle: 'normal',
             }}>
             {t('SAVE')}
@@ -109,7 +113,7 @@ const styles = StyleSheet.create({
   },
   sTitle1: {
     paddingTop: 34,
-    fontFamily: 'Manrope',
+
     fontStyle: 'normal',
 
     paddingLeft: 30,
@@ -119,7 +123,7 @@ const styles = StyleSheet.create({
   sTitle2: {
     paddingTop: 20,
     paddingBottom: 20,
-    fontFamily: 'Manrope',
+
     fontStyle: 'normal',
     paddingLeft: 30,
     fontSize: 12,
@@ -135,7 +139,6 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
   },
   texts: {
-    fontFamily: 'Manrope',
     fontStyle: 'normal',
     color: '#576573',
 
