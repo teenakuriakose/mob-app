@@ -5,10 +5,12 @@ import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as CountryActions from './store/actions';
 import {useTheme} from 'react-native-paper';
+import FullScreenModal from '../core/components/FullScreenModal';
 
-const CountrySelect = () => {
+const CountrySelect = props => {
   const {t} = useTranslation();
   const theme = useTheme();
+  const {onDismiss} = props;
   const languages = [
     {label: 'United Arab Emirates', value: 'AE'},
     {label: 'India', value: 'IN'},
@@ -19,81 +21,83 @@ const CountrySelect = () => {
   const dispatch = useDispatch();
   const countryState = useSelector(state => state.countrySelection);
 
-  console.log('teena countryState', countryState);
   return (
-    <View style={styles.lang}>
-      <Text style={styles.sTitle1}> {t('country')}</Text>
+    <FullScreenModal>
+      <View style={styles.lang}>
+        <Text style={styles.sTitle1}> {t('country')}</Text>
 
-      <FlatList
-        data={languages}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={() => {
-              setSelectedCountry(item.value);
-            }}
-            style={
-              selectedCountry === item.value
-                ? styles.selectedCountry
-                : styles.language
-            }>
-            <Text
+        <FlatList
+          data={languages}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() => {
+                setSelectedCountry(item.value);
+              }}
               style={
                 selectedCountry === item.value
-                  ? styles.selectedText
-                  : styles.text
+                  ? styles.selectedCountry
+                  : styles.language
               }>
-              {item.label}
+              <Text
+                style={
+                  selectedCountry === item.value
+                    ? styles.selectedText
+                    : styles.text
+                }>
+                {item.label}
+              </Text>
+            </TouchableOpacity>
+          )}
+        />
+
+        <View style={styles.btns}>
+          <TouchableOpacity
+            style={{
+              width: 143,
+              height: 48,
+              borderWidth: 1,
+              borderRadius: 8,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: theme.colors.primary,
+              borderStyle: 'solid',
+            }}>
+            <Text
+              style={{
+                fontStyle: 'normal',
+
+                color: theme.colors.primary,
+              }}>
+              {t('CANCEL')}
             </Text>
           </TouchableOpacity>
-        )}
-      />
 
-      <View style={styles.btns}>
-        <TouchableOpacity
-          style={{
-            width: 143,
-            height: 48,
-            borderWidth: 1,
-            borderRadius: 8,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderColor: theme.colors.primary,
-            borderStyle: 'solid',
-          }}>
-          <Text
+          <TouchableOpacity
+            onPress={() => {
+              dispatch(CountryActions.selectCountry(selectedCountry));
+              onDismiss();
+            }}
             style={{
-              fontStyle: 'normal',
-
-              color: theme.colors.primary,
+              width: 150,
+              height: 48,
+              borderWidth: 0.5,
+              borderRadius: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: theme.colors.primary,
             }}>
-            {t('CANCEL')}
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: theme.colors.surface,
 
-        <TouchableOpacity
-          onPress={() => {
-            dispatch(CountryActions.selectCountry(selectedCountry));
-          }}
-          style={{
-            width: 150,
-            height: 48,
-            borderWidth: 0.5,
-            borderRadius: 10,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: theme.colors.primary,
-          }}>
-          <Text
-            style={{
-              color: theme.colors.surface,
-
-              fontStyle: 'normal',
-            }}>
-            {t('SAVE')}
-          </Text>
-        </TouchableOpacity>
+                fontStyle: 'normal',
+              }}>
+              {t('SAVE')}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </FullScreenModal>
   );
 };
 

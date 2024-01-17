@@ -5,8 +5,10 @@ import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as LanguageActions from './store/actions';
 import {useTheme} from 'react-native-paper';
+import AppBody from '../core/components/containers/AppBody';
+import FullScreenModal from '../core/components/FullScreenModal';
 
-const LanguageSelect = () => {
+const LanguageSelect = props => {
   const {t} = useTranslation();
   const theme = useTheme();
   const languages = [
@@ -15,93 +17,96 @@ const LanguageSelect = () => {
 
     // Add more languages as needed
   ];
+
+  const {onDismiss} = props;
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const dispatch = useDispatch();
   const languageState = useSelector(state => state.languageSelection);
 
-  console.log('teena', languageState);
   return (
-    <View style={styles.lang}>
-      <Text style={styles.sTitle1}> {t('login')}</Text>
+    <FullScreenModal>
+      <View style={styles.lang}>
+        <Text style={styles.sTitle1}> {t('login')}</Text>
 
-      <FlatList
-        data={languages}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={() => {
-              setSelectedLanguage(item.value);
-            }}
-            style={
-              selectedLanguage === item.value
-                ? styles.selectedLanguage
-                : styles.language
-            }>
-            <Text
+        <FlatList
+          data={languages}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() => {
+                setSelectedLanguage(item.value);
+              }}
               style={
                 selectedLanguage === item.value
-                  ? styles.selectedText
-                  : styles.text
+                  ? styles.selectedLanguage
+                  : styles.language
               }>
-              {item.label}
+              <Text
+                style={
+                  selectedLanguage === item.value
+                    ? styles.selectedText
+                    : styles.text
+                }>
+                {item.label}
+              </Text>
+            </TouchableOpacity>
+          )}
+        />
+
+        <View style={styles.btns}>
+          <TouchableOpacity
+            style={{
+              width: 143,
+              height: 48,
+              borderWidth: 1,
+              borderRadius: 8,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: theme.colors.primary,
+              borderStyle: 'solid',
+            }}>
+            <Text
+              style={{
+                fontStyle: 'normal',
+
+                color: theme.colors.primary,
+              }}>
+              {t('CANCEL')}
             </Text>
           </TouchableOpacity>
-        )}
-      />
 
-      <View style={styles.btns}>
-        <TouchableOpacity
-          style={{
-            width: 143,
-            height: 48,
-            borderWidth: 1,
-            borderRadius: 8,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderColor: theme.colors.primary,
-            borderStyle: 'solid',
-          }}>
-          <Text
+          <TouchableOpacity
+            onPress={() => {
+              i18next.changeLanguage(selectedLanguage);
+              dispatch(LanguageActions.selectLanguage(selectedLanguage));
+              onDismiss();
+            }}
             style={{
-              fontStyle: 'normal',
-
-              color: theme.colors.primary,
+              width: 150,
+              height: 48,
+              borderWidth: 0.5,
+              borderRadius: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: theme.colors.primary,
             }}>
-            {t('CANCEL')}
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: theme.colors.surface,
 
-        <TouchableOpacity
-          onPress={() => {
-            i18next.changeLanguage(selectedLanguage);
-            dispatch(LanguageActions.selectLanguage(selectedLanguage));
-          }}
-          style={{
-            width: 150,
-            height: 48,
-            borderWidth: 0.5,
-            borderRadius: 10,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: theme.colors.primary,
-          }}>
-          <Text
-            style={{
-              color: theme.colors.surface,
-
-              fontStyle: 'normal',
-            }}>
-            {t('SAVE')}
-          </Text>
-        </TouchableOpacity>
+                fontStyle: 'normal',
+              }}>
+              {t('SAVE')}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </FullScreenModal>
   );
 };
 
 const styles = StyleSheet.create({
   lang: {
-    width: 365,
-    left: 20,
+    width: '100%',
     backgroundColor: '#FFFFFF',
 
     top: 40,
