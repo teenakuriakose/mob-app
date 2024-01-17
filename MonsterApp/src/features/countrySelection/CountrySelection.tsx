@@ -3,46 +3,44 @@ import {useTranslation} from 'react-i18next';
 import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
-import * as LanguageActions from './store/actions';
+import * as CountryActions from './store/actions';
 import {useTheme} from 'react-native-paper';
-import AppBody from '../core/components/containers/AppBody';
 import FullScreenModal from '../core/components/FullScreenModal';
 
-const LanguageSelect = props => {
+const CountrySelect = props => {
   const {t} = useTranslation();
   const theme = useTheme();
+  const {onDismiss} = props;
   const languages = [
-    {label: 'English', value: 'en'},
-    {label: 'Arabic', value: 'ar'},
+    {label: 'United Arab Emirates', value: 'AE'},
+    {label: 'India', value: 'IN'},
 
     // Add more languages as needed
   ];
-
-  const {onDismiss} = props;
-  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const dispatch = useDispatch();
-  const languageState = useSelector(state => state.languageSelection);
+  const countryState = useSelector(state => state.countrySelection);
 
   return (
     <FullScreenModal>
       <View style={styles.lang}>
-        <Text style={styles.sTitle1}> {t('login')}</Text>
+        <Text style={styles.sTitle1}> {t('country')}</Text>
 
         <FlatList
           data={languages}
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
-                setSelectedLanguage(item.value);
+                setSelectedCountry(item.value);
               }}
               style={
-                selectedLanguage === item.value
-                  ? styles.selectedLanguage
+                selectedCountry === item.value
+                  ? styles.selectedCountry
                   : styles.language
               }>
               <Text
                 style={
-                  selectedLanguage === item.value
+                  selectedCountry === item.value
                     ? styles.selectedText
                     : styles.text
                 }>
@@ -76,8 +74,7 @@ const LanguageSelect = props => {
 
           <TouchableOpacity
             onPress={() => {
-              i18next.changeLanguage(selectedLanguage);
-              dispatch(LanguageActions.selectLanguage(selectedLanguage));
+              dispatch(CountryActions.selectCountry(selectedCountry));
               onDismiss();
             }}
             style={{
@@ -106,7 +103,8 @@ const LanguageSelect = props => {
 
 const styles = StyleSheet.create({
   lang: {
-    width: '100%',
+    width: 365,
+    left: 20,
     backgroundColor: '#FFFFFF',
 
     top: 40,
@@ -170,7 +168,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
-  selectedLanguage: {
+  selectedCountry: {
     padding: 10,
     backgroundColor: '#eee',
     borderBottomWidth: 1,
@@ -187,4 +185,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LanguageSelect;
+export default CountrySelect;

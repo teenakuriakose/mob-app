@@ -1,5 +1,9 @@
 {
     "translation": {
-        "login": "تسجيل الدخول"
+        "welcome": "مرحباً",
+        "login": "تسجيل الدخول",
+        "country": "دولة",
+        "username": "اسم المستخدم",
+        "password": "كلمة المرور"
     }
 }

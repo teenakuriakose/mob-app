@@ -1,5 +1,9 @@
 {
     "translation": {
-        "login": "Login"
+        "welcome": "Welcome",
+        "login": "Login",
+        "country": "Country",
+        "username": "Username",
+        "password": "Password",
     }
 }
