@@ -10,6 +10,7 @@ import FullScreenModal from '../core/components/FullScreenModal';
 import CountrySelect from '../countrySelection/CountrySelection';
 import LanguageSelect from '../languageSelection/LanguageSelection';
 import SvgMonster from '../icons/SvgMonster';
+import TextInput from '../core/components/TextInput';
 
 const SignIn = () => {
   const theme = useTheme();
@@ -17,6 +18,7 @@ const SignIn = () => {
   const {languageSelection, countrySelection} = useSelector(state => state);
   const [countryModal, setCountryModal] = useState(false);
   const [languageModal, setLanguageModal] = useState(false);
+  const [text, setText] = useState('');
 
   const onCountryChangeSelect = () => {
     setCountryModal(true);
@@ -47,6 +49,12 @@ const SignIn = () => {
         <Text variant={'heading'} color={theme.colors.primary}>
           {t('welcome')}
         </Text>
+      </View>
+      <View flexDirection="row" flexGrow={1} justifyContent="center">
+        <TextInput label={t('username')} />
+      </View>
+      <View flexDirection="row" flexGrow={1} justifyContent="center">
+        <TextInput label={t('password')} secureTextEntry />
       </View>
       {countryModal && (
         <CountrySelect onDismiss={() => setCountryModal(false)} />
