@@ -9,6 +9,7 @@ import {useSelector} from 'react-redux';
 import FullScreenModal from '../core/components/FullScreenModal';
 import CountrySelect from '../countrySelection/CountrySelection';
 import LanguageSelect from '../languageSelection/LanguageSelection';
+import SvgMonster from '../icons/SvgMonster';
 
 const SignIn = () => {
   const theme = useTheme();
@@ -24,7 +25,7 @@ const SignIn = () => {
   return (
     <AppBody>
       <View flexDirection="row" flexGrow={1} justifyContent="flex-end">
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => setLanguageModal(true)}>
           <Icon size={50} color={theme.colors.primary}>
             <Text color={theme.colors.surface}>
               {t(languageSelection.lang)}
@@ -39,9 +40,14 @@ const SignIn = () => {
           </Icon>
         </TouchableOpacity>
       </View>
-      <Text variant={'heading'} color={theme.colors.primary}>
-        {t('welcome')}
-      </Text>
+      <View flexDirection="row" flexGrow={1} justifyContent="center">
+        <SvgMonster color={theme.colors.primary} width={200} height={200} />
+      </View>
+      <View flexDirection="row" flexGrow={1} justifyContent="center">
+        <Text variant={'heading'} color={theme.colors.primary}>
+          {t('welcome')}
+        </Text>
+      </View>
       {countryModal && (
         <CountrySelect onDismiss={() => setCountryModal(false)} />
       )}
