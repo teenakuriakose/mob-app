@@ -26,9 +26,6 @@ const Setup = () => {
             style={{
               backgroundColor: isDarkMode ? '#000' : '#FFF',
             }}>
-            <Text>Monster App</Text>
-            {/* <LanguageSelect /> */}
-            {/* <CountrySelect /> */}
             <SignIn />
           </View>
         </SafeAreaView>

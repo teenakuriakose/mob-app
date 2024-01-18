@@ -11,6 +11,8 @@ import CountrySelect from '../countrySelection/CountrySelection';
 import LanguageSelect from '../languageSelection/LanguageSelection';
 import SvgMonster from '../icons/SvgMonster';
 import TextInput from '../core/components/TextInput';
+import Spacer from '../core/components/Spacer';
+import {SpacerSizes} from '../core/constants';
 
 const SignIn = () => {
   const theme = useTheme();
@@ -18,7 +20,7 @@ const SignIn = () => {
   const {languageSelection, countrySelection} = useSelector(state => state);
   const [countryModal, setCountryModal] = useState(false);
   const [languageModal, setLanguageModal] = useState(false);
-  const [text, setText] = useState('');
+  const [username, setUsername] = useState('');
 
   const onCountryChangeSelect = () => {
     setCountryModal(true);
@@ -42,6 +44,7 @@ const SignIn = () => {
           </Icon>
         </TouchableOpacity>
       </View>
+      <Spacer size={SpacerSizes.lg} />
       <View flexDirection="row" flexGrow={1} justifyContent="center">
         <SvgMonster color={theme.colors.primary} width={200} height={200} />
       </View>
@@ -50,12 +53,14 @@ const SignIn = () => {
           {t('welcome')}
         </Text>
       </View>
-      <View flexDirection="row" flexGrow={1} justifyContent="center">
-        <TextInput label={t('username')} />
-      </View>
-      <View flexDirection="row" flexGrow={1} justifyContent="center">
-        <TextInput label={t('password')} secureTextEntry />
-      </View>
+      <Spacer size={SpacerSizes.lg} />
+      <TextInput
+        label={t('username')}
+        text={username}
+        onChange={val => setUsername(val)}
+      />
+      <Spacer size={SpacerSizes.md} />
+      <TextInput label={t('password')} secureTextEntry />
       {countryModal && (
         <CountrySelect onDismiss={() => setCountryModal(false)} />
       )}

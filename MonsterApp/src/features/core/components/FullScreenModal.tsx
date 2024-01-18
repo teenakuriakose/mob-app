@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 FullScreenModal.defaultProps = {
   animationType: 'slide',
-  transparent: true,
+  transparent: false,
   onDismiss: () => {},
 };
 
