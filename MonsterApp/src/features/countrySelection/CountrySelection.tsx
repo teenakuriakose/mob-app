@@ -5,7 +5,7 @@ import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as CountryActions from './store/actions';
 import {useTheme} from 'react-native-paper';
-import FullScreenModal from '../core/components/FullScreenModal';
+import FullScreenModal from '../../core/components/FullScreenModal';
 
 const CountrySelect = props => {
   const {t} = useTranslation();

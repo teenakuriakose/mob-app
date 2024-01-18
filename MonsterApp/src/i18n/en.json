@@ -5,5 +5,7 @@
         "country": "Country",
         "username": "Username",
         "password": "Password",
+        "register": "Sign up",
+        "back" : "Back"
     }
 }

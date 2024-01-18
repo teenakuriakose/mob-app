@@ -1,7 +1,7 @@
 import React, {createContext, useState} from 'react';
-import {withTheme} from '../../../theme/index';
+import {withTheme} from '../../theme/index';
 import {Modal} from 'react-native';
-import AppBody from '../components/containers/AppBody';
+import AppBody from './containers/AppBody';
 
 /**
  * @Component ModalContext

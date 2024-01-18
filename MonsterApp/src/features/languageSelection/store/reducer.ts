@@ -1,7 +1,7 @@
 import * as Actions from './actions';
 
 export const initialState: any = {
-  lang: '',
+  lang: 'en',
 };
 
 export default function (state = initialState, action) {
