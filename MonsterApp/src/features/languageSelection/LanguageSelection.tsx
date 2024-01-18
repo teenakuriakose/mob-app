@@ -31,12 +31,6 @@ const LanguageSelect = props => {
   const dispatch = useDispatch();
   const languageState = useSelector(state => state.languageSelection.lang);
 
-  // useEffect(() => {
-  //   if (selectedLanguage === 'ar') {
-  //     I18nManager.forceRTL(true);
-  //   }
-  //   setTimeout(RNRestart.Restart(), 10000);
-  // }, [languageState, selectedLanguage]);
 
   return (
     <FullScreenModal>
@@ -95,6 +89,10 @@ const LanguageSelect = props => {
               i18next.changeLanguage(selectedLanguage);
               dispatch(LanguageActions.selectLanguage(selectedLanguage));
               onDismiss();
+              I18nManager.forceRTL(selectedLanguage === 'ar');
+              setTimeout(() => {
+                RNRestart.Restart();
+              }, 1000);
             }}
             style={{
               width: 150,
