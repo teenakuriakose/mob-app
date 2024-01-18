@@ -15,7 +15,7 @@ import Spacer from '../../core/components/Spacer';
 import {SpacerSizes} from '../../core/constants';
 import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
-import {ROUTE_DASHBOARD} from '../../navigation/routes';
+import {ROUTE_DASHBOARD, ROUTE_SIGN_UP} from '../../navigation/routes';
 
 const SignIn = () => {
   const theme = useTheme();
@@ -80,6 +80,15 @@ const SignIn = () => {
             {t('login')}
           </Text>
         </View>
+      </Button>
+      <Button
+        mode={'text'}
+        onPress={() => {
+          navigation.push(ROUTE_SIGN_UP);
+        }}>
+        <Text color={theme.colors.primary} variant="text1">
+          {t('register')}
+        </Text>
       </Button>
       {countryModal && (
         <CountrySelect onDismiss={() => setCountryModal(false)} />
