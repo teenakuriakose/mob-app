@@ -15,13 +15,15 @@ import {useTheme} from 'react-native-paper';
 import AppBody from '../../core/components/containers/AppBody';
 import FullScreenModal from '../../core/components/FullScreenModal';
 import RNRestart from 'react-native-restart';
+import {LANGUAGES} from '../../core/constants';
 
 const LanguageSelect = props => {
   const {t} = useTranslation();
   const theme = useTheme();
   const languages = [
-    {label: 'English', value: 'en'},
-    {label: 'Arabic', value: 'ar'},
+    {label: t(`languages.${LANGUAGES.EN}`), value: LANGUAGES.EN},
+    {label: t(`languages.${LANGUAGES.AR}`), value: LANGUAGES.AR},
+    {label: t(`languages.${LANGUAGES.HI}`), value: LANGUAGES.HI},
 
     // Add more languages as needed
   ];
@@ -30,13 +32,6 @@ const LanguageSelect = props => {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const dispatch = useDispatch();
   const languageState = useSelector(state => state.languageSelection.lang);
-
-  // useEffect(() => {
-  //   if (selectedLanguage === 'ar') {
-  //     I18nManager.forceRTL(true);
-  //   }
-  //   setTimeout(RNRestart.Restart(), 10000);
-  // }, [languageState, selectedLanguage]);
 
   return (
     <FullScreenModal>
@@ -95,6 +90,10 @@ const LanguageSelect = props => {
               i18next.changeLanguage(selectedLanguage);
               dispatch(LanguageActions.selectLanguage(selectedLanguage));
               onDismiss();
+              I18nManager.forceRTL(selectedLanguage === 'ar');
+              setTimeout(() => {
+                RNRestart.Restart();
+              }, 1000);
             }}
             style={{
               width: 150,
