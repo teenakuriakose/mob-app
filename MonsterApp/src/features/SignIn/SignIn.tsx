@@ -1,19 +1,19 @@
 import {View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import AppBody from '../core/components/containers/AppBody';
-import Text from '../../features/core/components/Text/Text';
+import AppBody from '../../core/components/containers/AppBody';
+import Text from '../../core/components/Text/Text';
 import {useTheme} from '../../theme';
 import {useTranslation} from 'react-i18next';
-import Icon from '../core/components/Icon';
+import Icon from '../../core/components/Icon';
 import {useSelector} from 'react-redux';
-import FullScreenModal from '../core/components/FullScreenModal';
+import FullScreenModal from '../../core/components/FullScreenModal';
 import CountrySelect from '../countrySelection/CountrySelection';
 import LanguageSelect from '../languageSelection/LanguageSelection';
 import SvgMonster from '../icons/SvgMonster';
-import TextInput from '../core/components/TextInput';
-import Spacer from '../core/components/Spacer';
-import {SpacerSizes} from '../core/constants';
-import Button from '../core/components/Button';
+import TextInput from '../../core/components/TextInput';
+import Spacer from '../../core/components/Spacer';
+import {SpacerSizes} from '../../core/constants';
+import Button from '../../core/components/Button';
 
 const SignIn = () => {
   const theme = useTheme();

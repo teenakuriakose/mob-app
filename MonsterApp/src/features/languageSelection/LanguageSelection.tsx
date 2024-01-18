@@ -12,8 +12,8 @@ import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as LanguageActions from './store/actions';
 import {useTheme} from 'react-native-paper';
-import AppBody from '../core/components/containers/AppBody';
-import FullScreenModal from '../core/components/FullScreenModal';
+import AppBody from '../../core/components/containers/AppBody';
+import FullScreenModal from '../../core/components/FullScreenModal';
 import RNRestart from 'react-native-restart';
 
 const LanguageSelect = props => {

@@ -2,7 +2,7 @@ import React from 'react';
 import {Button as PaperButton} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 
-import {useTheme} from '../../../theme';
+import {useTheme} from '../../theme';
 
 /**
  * @Component Button

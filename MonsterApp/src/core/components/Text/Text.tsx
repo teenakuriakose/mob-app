@@ -1,6 +1,6 @@
 import {View, Text as TextComponent, StyleSheet} from 'react-native';
 import React from 'react';
-import {withTheme} from '../../../../theme';
+import {withTheme} from '../../../theme';
 
 const Text = props => {
   const {variant, children, color} = props;
@@ -20,7 +20,7 @@ const Text = props => {
         return {
           ...baseStyles,
           fontSize: 18,
-          fontWeight: '600'
+          fontWeight: '600',
         };
       case 'text2':
         return {
