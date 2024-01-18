@@ -14,6 +14,8 @@ import TextInput from '../../core/components/TextInput';
 import Spacer from '../../core/components/Spacer';
 import {SpacerSizes} from '../../core/constants';
 import Button from '../../core/components/Button';
+import {useNavigation} from '@react-navigation/native';
+import {ROUTE_DASHBOARD} from '../../navigation/routes';
 
 const SignIn = () => {
   const theme = useTheme();
@@ -22,6 +24,7 @@ const SignIn = () => {
   const [countryModal, setCountryModal] = useState(false);
   const [languageModal, setLanguageModal] = useState(false);
   const [username, setUsername] = useState('');
+  const navigation = useNavigation();
 
   const onCountryChangeSelect = () => {
     setCountryModal(true);
@@ -66,7 +69,7 @@ const SignIn = () => {
 
       <Button
         onPress={() => {
-          console.log('Here');
+          navigation.push(ROUTE_DASHBOARD);
         }}>
         <View
           flexDirection="row"
