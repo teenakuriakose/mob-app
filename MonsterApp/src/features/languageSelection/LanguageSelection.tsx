@@ -22,6 +22,7 @@ const LanguageSelect = props => {
   const languages = [
     {label: 'English', value: 'en'},
     {label: 'Arabic', value: 'ar'},
+    {label: 'Hindi', value: 'hi'},
 
     // Add more languages as needed
   ];
