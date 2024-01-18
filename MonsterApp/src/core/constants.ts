@@ -8,3 +8,9 @@ export enum SpacerSizes {
   'xxl' = 40,
   'xxxl' = 48,
 }
+
+export enum LANGUAGES {
+  EN = 'en',
+  AR = 'ar',
+  HI = 'hi',
+}

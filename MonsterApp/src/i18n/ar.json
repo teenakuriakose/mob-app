@@ -7,6 +7,11 @@
         "password": "كلمة المرور",
         "register": "اشتراك",
         "back" : "خلف",
+        "languages": {
+            "en": "English",
+            "ar": "عربي",
+            "hi": "हिंदी"
+        },
         "errorMessage": {
             "IN": "Username must start with A and have 6 characters.",
             "AE": "Username must be 5 characters and alphanumeric.",

@@ -15,14 +15,15 @@ import {useTheme} from 'react-native-paper';
 import AppBody from '../../core/components/containers/AppBody';
 import FullScreenModal from '../../core/components/FullScreenModal';
 import RNRestart from 'react-native-restart';
+import {LANGUAGES} from '../../core/constants';
 
 const LanguageSelect = props => {
   const {t} = useTranslation();
   const theme = useTheme();
   const languages = [
-    {label: 'English', value: 'en'},
-    {label: 'Arabic', value: 'ar'},
-    {label: 'Hindi', value: 'hi'},
+    {label: t(`languages.${LANGUAGES.EN}`), value: LANGUAGES.EN},
+    {label: t(`languages.${LANGUAGES.AR}`), value: LANGUAGES.AR},
+    {label: t(`languages.${LANGUAGES.HI}`), value: LANGUAGES.HI},
 
     // Add more languages as needed
   ];
@@ -31,7 +32,6 @@ const LanguageSelect = props => {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const dispatch = useDispatch();
   const languageState = useSelector(state => state.languageSelection.lang);
-
 
   return (
     <FullScreenModal>
