@@ -5,18 +5,27 @@ import {
   StatusBar,
   SafeAreaView,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import LanguageSelect from '../features/languageSelection/LanguageSelection';
 import {ThemeProvider, getSelectedTheme} from '../theme/index';
 import {DefaultTheme} from 'react-native-paper';
 import CountrySelect from '../features/countrySelection/CountrySelection';
 import {useSelector} from 'react-redux';
 import SignIn from '../features/SignIn/SignIn';
+import {useTranslation} from 'react-i18next';
+
 
 const Setup = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const countrySelection = useSelector(state => state.countrySelection.country);
+  const language = useSelector(state => state.languageSelection.lang);
+  const {i18n} = useTranslation();
 
+  useEffect(() => {
+    !!language && i18n.changeLanguage(language);
+  }, []);
+  
+  
   return (
     <>
       <ThemeProvider theme={getSelectedTheme(countrySelection)}>

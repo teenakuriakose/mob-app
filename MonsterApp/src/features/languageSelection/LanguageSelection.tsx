@@ -1,12 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  I18nManager,
+} from 'react-native';
 import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as LanguageActions from './store/actions';
 import {useTheme} from 'react-native-paper';
 import AppBody from '../core/components/containers/AppBody';
 import FullScreenModal from '../core/components/FullScreenModal';
+import RNRestart from 'react-native-restart';
 
 const LanguageSelect = props => {
   const {t} = useTranslation();
@@ -21,7 +29,14 @@ const LanguageSelect = props => {
   const {onDismiss} = props;
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const dispatch = useDispatch();
-  const languageState = useSelector(state => state.languageSelection);
+  const languageState = useSelector(state => state.languageSelection.lang);
+
+  // useEffect(() => {
+  //   if (selectedLanguage === 'ar') {
+  //     I18nManager.forceRTL(true);
+  //   }
+  //   setTimeout(RNRestart.Restart(), 10000);
+  // }, [languageState, selectedLanguage]);
 
   return (
     <FullScreenModal>
@@ -63,7 +78,8 @@ const LanguageSelect = props => {
               justifyContent: 'center',
               borderColor: theme.colors.primary,
               borderStyle: 'solid',
-            }}>
+            }}
+            onPress={() => onDismiss()}>
             <Text
               style={{
                 fontStyle: 'normal',
