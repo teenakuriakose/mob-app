@@ -14,3 +14,10 @@ export enum LANGUAGES {
   AR = 'ar',
   HI = 'hi',
 }
+
+export enum COUNTRIES {
+  AE = 'AE',
+  IN = 'IN',
+  PK = 'PK',
+  EG = 'EG',
+}

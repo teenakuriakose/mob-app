@@ -6,14 +6,17 @@ import {useDispatch, useSelector} from 'react-redux';
 import * as CountryActions from './store/actions';
 import {useTheme} from 'react-native-paper';
 import FullScreenModal from '../../core/components/FullScreenModal';
+import {COUNTRIES} from '../../core/constants';
 
 const CountrySelect = props => {
   const {t} = useTranslation();
   const theme = useTheme();
   const {onDismiss} = props;
   const languages = [
-    {label: 'United Arab Emirates', value: 'AE'},
-    {label: 'India', value: 'IN'},
+    {label: 'United Arab Emirates', value: COUNTRIES.AE},
+    {label: 'India', value: COUNTRIES.IN},
+    {label: 'Pakistan', value: COUNTRIES.PK},
+    {label: 'Egypt', value: COUNTRIES.EG},
 
     // Add more languages as needed
   ];
