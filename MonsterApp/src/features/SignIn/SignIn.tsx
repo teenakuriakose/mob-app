@@ -13,6 +13,7 @@ import SvgMonster from '../icons/SvgMonster';
 import TextInput from '../core/components/TextInput';
 import Spacer from '../core/components/Spacer';
 import {SpacerSizes} from '../core/constants';
+import Button from '../core/components/Button';
 
 const SignIn = () => {
   const theme = useTheme();
@@ -61,6 +62,22 @@ const SignIn = () => {
       />
       <Spacer size={SpacerSizes.md} />
       <TextInput label={t('password')} secureTextEntry />
+      <Spacer size={SpacerSizes.md} />
+
+      <Button
+        onPress={() => {
+          console.log('Here');
+        }}>
+        <View
+          flexDirection="row"
+          flexGrow={1}
+          justifyContent="center"
+          alignItems="center">
+          <Text color={theme.colors.surface} variant="text1">
+            {t('login')}
+          </Text>
+        </View>
+      </Button>
       {countryModal && (
         <CountrySelect onDismiss={() => setCountryModal(false)} />
       )}
