@@ -16,6 +16,7 @@ import {SpacerSizes} from '../../core/constants';
 import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {ROUTE_DASHBOARD, ROUTE_SIGN_UP} from '../../navigation/routes';
+import {useCredentialsValidation} from '../../hooks/useCredentialsValidation';
 
 const SignIn = () => {
   const theme = useTheme();
@@ -23,8 +24,19 @@ const SignIn = () => {
   const {languageSelection, countrySelection} = useSelector(state => state);
   const [countryModal, setCountryModal] = useState(false);
   const [languageModal, setLanguageModal] = useState(false);
-  const [username, setUsername] = useState('');
   const navigation = useNavigation();
+  const {
+    username,
+    setUsername,
+    usernameError,
+    isUsernameValid,
+    password,
+    setPassword,
+    passwordError,
+    isPasswordValid,
+    handleUsernameBlur,
+    handlePasswordBlur,
+  } = useCredentialsValidation(countrySelection.country, t);
 
   const onCountryChangeSelect = () => {
     setCountryModal(true);
@@ -62,9 +74,20 @@ const SignIn = () => {
         label={t('username')}
         text={username}
         onChange={val => setUsername(val)}
+        error={!!usernameError}
+        onBlur={handleUsernameBlur}
+        errorMessage={usernameError || ''}
       />
       <Spacer size={SpacerSizes.md} />
-      <TextInput label={t('password')} secureTextEntry />
+      <TextInput
+        label={t('password')}
+        secureTextEntry
+        text={password}
+        onBlur={handlePasswordBlur}
+        onChange={val => setPassword(val)}
+        error={!!passwordError}
+        errorMessage={passwordError || ''}
+      />
       <Spacer size={SpacerSizes.md} />
 
       <Button

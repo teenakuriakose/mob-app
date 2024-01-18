@@ -10,6 +10,8 @@ const TextInput = props => {
     onChange = () => {},
     text,
     backgroundColor,
+    error,
+    errorMessage,
     ...rest
   } = props;
   const theme = useTheme();
@@ -23,9 +25,15 @@ const TextInput = props => {
           label={<Text>{label}</Text>}
           value={text}
           onChangeText={onChange}
+          error={error}
           theme={theme}
           {...rest}
         />
+        {error ? (
+          <Text type="error" color={theme.colors.error} visible={true}>
+            {errorMessage}
+          </Text>
+        ) : null}
       </View>
     </View>
   );

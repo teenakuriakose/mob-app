@@ -6,6 +6,12 @@
         "username": "Username",
         "password": "Password",
         "register": "Sign up",
-        "back" : "Back"
+        "back" : "Back",
+        "errorMessage": {
+            "IN": "Username must start with A and have 6 characters.",
+            "AE": "Username must be 5 characters and alphanumeric.",
+            "PK": "Username must have at least 4 characters and contain a number",
+            "EG": "Username must be 5 characters and can contain special characters"
+        }
     }
 }
