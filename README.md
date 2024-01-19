@@ -1,6 +1,7 @@
 # MonsterApp
 
-MonsterApp is a mobile application developed for the users to explore various Monster-related activities in their region of choice. It is currently available in 4 regions - United Arab Emirates, India, Pakistan and Egypt. The Application also supports 3 different languages - English, Arabic and Hindi
+MonsterApp is a mobile application developed for the users to scribble on the device explore various Monster-related activities in their region of choice. It is currently available in 4 regions - United Arab Emirates, India, Pakistan and Egypt. The Application also supports 3 different languages - English, Arabic and Hindi
+
 
 ## Getting Started
 
@@ -28,12 +29,27 @@ These instructions will help you set up and run the MonsterApp on your local mac
 
 ### Running the App
 
-To run the app on your local machine, use the following commands:
+1. To run the app on your local machine, use the following commands:
 
 ```npm start```
         or 
 ```yarn start```
 
-### Contributors
+2. Navigate to ios folder and install pods
+
+   ```cd mob-app/MonsterApp/ios```
+   ```pod install```
+
+3. To run the app in iOS 
+   ```yarn ios``` 
+         or 
+   ```npm run ios```
+4.  To run the app in Android
+ ```yarn android``` 
+         or 
+   ```npm run android```
+
+
+
 
 

@@ -6,7 +6,6 @@ import {useTheme} from '../../theme';
 import {useTranslation} from 'react-i18next';
 import Icon from '../../core/components/Icon';
 import {useSelector} from 'react-redux';
-import FullScreenModal from '../../core/components/FullScreenModal';
 import CountrySelect from '../countrySelection/CountrySelection';
 import LanguageSelect from '../languageSelection/LanguageSelection';
 import SvgMonster from '../icons/SvgMonster';
