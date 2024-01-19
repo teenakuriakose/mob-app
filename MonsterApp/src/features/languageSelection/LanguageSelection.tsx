@@ -15,9 +15,10 @@ import {useTheme} from 'react-native-paper';
 import AppBody from '../../core/components/containers/AppBody';
 import FullScreenModal from '../../core/components/FullScreenModal';
 import RNRestart from 'react-native-restart';
-import {LANGUAGES, SpacerSizes} from '../../core/constants';
+import {LANGUAGES, SpacerSizes, TEXT_VARIANT} from '../../core/constants';
 import Button from '../../core/components/Button';
 import Spacer from '../../core/components/Spacer';
+import {isRTLLanguage} from './util';
 
 const LanguageSelect = props => {
   const {t} = useTranslation();
@@ -58,7 +59,7 @@ const LanguageSelect = props => {
                   : styles.language
               }>
               <Text
-                variant={'text1'}
+                variant={TEXT_VARIANT.TEXT_1}
                 color={
                   selectedLanguage === item.value
                     ? theme.colors.primary
@@ -76,7 +77,7 @@ const LanguageSelect = props => {
             flexGrow={1}
             justifyContent="center"
             alignItems="center">
-            <Text color={theme.colors.primary} variant="text1">
+            <Text color={theme.colors.primary} variant={TEXT_VARIANT.TEXT_1}>
               {t('cancel')}
             </Text>
           </View>
@@ -86,12 +87,12 @@ const LanguageSelect = props => {
             i18next.changeLanguage(selectedLanguage);
             dispatch(LanguageActions.selectLanguage(selectedLanguage));
             onDismiss();
-            I18nManager.forceRTL(selectedLanguage === 'ar');
+            I18nManager.forceRTL(isRTLLanguage(selectedLanguage));
             setTimeout(() => {
               RNRestart.Restart();
             }, 1000);
           }}>
-          <Text color={theme.colors.surface} variant="text1">
+          <Text color={theme.colors.surface} variant={TEXT_VARIANT.TEXT_1}>
             {t('save')}
           </Text>
         </Button>

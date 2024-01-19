@@ -1,7 +1,13 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
-const Icon = props => {
+type IconProps = {
+  color: string;
+  size: number;
+  children: React.ReactNode;
+};
+
+const Icon = (props: IconProps) => {
   const {color, size, children} = props;
   const styles = makeStyles(size, color);
   return <View style={styles.icon}>{children}</View>;

@@ -9,19 +9,15 @@ import {useTheme} from '../../theme';
  * @Component Button
  * @description Themed Button types
  * @props size [possible sizes of the app, e.g xxl, lg]
- * @variants primary 
- *           transparent
- *           link
  * @Usage
-       <Button primary onPress={() => console.log('Pressed')}>
-          {t('prelaunch.login')}
-        </Button>
-       <Button tranparent onPress={() => console.log('Pressed')}>
+       <Button onPress={() => console.log('Pressed')}>
           {t('prelaunch.login')}
         </Button>
  */
 
-const Button = (props: any) => {
+type ButtonProps = React.ComponentProps<typeof PaperButton>;
+
+const Button = (props: ButtonProps) => {
   const {disabled = false, ...rest} = props;
   const theme = useTheme();
 

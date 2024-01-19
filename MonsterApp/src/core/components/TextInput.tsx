@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   TextInput as CoreTextInput,
   HelperText,
@@ -8,7 +8,6 @@ import {View} from 'react-native';
 import Text from './Text/Text';
 
 const TextInput = props => {
-  // const [text, setText] = useState('');
   const {
     label = '',
     onChange = () => {},
