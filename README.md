@@ -76,7 +76,7 @@ npm run ios
 npm run android
 ```
 
-### Aa look inside!
+### A look inside!
 
 ![Screen1](MonsterApp/src/assets/Screen1.png)
 ![Screen2](MonsterApp/src/assets/Screen2.png)
