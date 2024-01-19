@@ -8,6 +8,7 @@
         "register": "Sign up",
         "save": "Save",
         "cancel": "Cancel",
+        "clear": "Clear",
         "changeLanguage": "Change Language",
         "changeCountry": "Change Country",
         "back" : "Back",
@@ -27,7 +28,7 @@
             "AE": "Username must be 5 characters and alphanumeric.",
             "PK": "Username must have at least 4 characters and contain a number",
             "EG": "Username must be 5 characters and can contain special characters"
-        }
-
+        },
+        "drawAMonster": "Draw a Monster"
     }
 }
