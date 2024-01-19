@@ -1,22 +1,32 @@
 {
     "translation": {
-        "welcome": "مرحباً",
+        "welcome": "مرحبًا!",
         "login": "تسجيل الدخول",
-        "country": "دولة",
+        "country": "الدولة",
         "username": "اسم المستخدم",
         "password": "كلمة المرور",
-        "register": "اشتراك",
-        "back" : "خلف",
+        "register": "التسجيل",
+        "save": "حفظ",
+        "cancel": "إلغاء",
+        "changeLanguage": "تغيير اللغة",
+        "changeCountry": "تغيير الدولة",
+        "back": "رجوع",
         "languages": {
             "en": "English",
             "ar": "عربي",
             "hi": "हिंदी"
         },
+        "countries": {
+            "AE": "الإمارات العربية المتحدة",
+            "IN": "الهند",
+            "PK": "باكستان",
+            "EG": "مصر"
+        },
         "errorMessage": {
-            "IN": "Username must start with A and have 6 characters.",
-            "AE": "Username must be 5 characters and alphanumeric.",
-            "PK": "Username must have at least 4 characters and contain a number",
-            "EG": "Username must be 5 characters and can contain special characters"
+            "IN": "يجب أن يبدأ اسم المستخدم بـ A ويحتوي على 6 أحرف.",
+            "AE": "يجب أن يكون اسم المستخدم مكونًا من 5 أحرف ويحتوي على أحرف وأرقام.",
+            "PK": "يجب أن يحتوي اسم المستخدم على الأقل على 4 أحرف ويحتوي على رقم.",
+            "EG": "يجب أن يكون اسم المستخدم مكونًا من 5 أحرف ويمكن أن يحتوي على أحرف خاصة."
         }
     }
 }

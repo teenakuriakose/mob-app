@@ -1,24 +1,26 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as CountryActions from './store/actions';
 import {useTheme} from 'react-native-paper';
 import FullScreenModal from '../../core/components/FullScreenModal';
-import {COUNTRIES} from '../../core/constants';
+import {COUNTRIES, SpacerSizes} from '../../core/constants';
+import AppBody from '../../core/components/containers/AppBody';
+import Text from '../../core/components/Text/Text';
+import Button from '../../core/components/Button';
+import Spacer from '../../core/components/Spacer';
 
 const CountrySelect = props => {
   const {t} = useTranslation();
   const theme = useTheme();
   const {onDismiss} = props;
-  const languages = [
-    {label: 'United Arab Emirates', value: COUNTRIES.AE},
-    {label: 'India', value: COUNTRIES.IN},
-    {label: 'Pakistan', value: COUNTRIES.PK},
-    {label: 'Egypt', value: COUNTRIES.EG},
-
-    // Add more languages as needed
+  const countries = [
+    {label: t(`countries.${COUNTRIES.AE}`), value: COUNTRIES.AE},
+    {label: t(`countries.${COUNTRIES.IN}`), value: COUNTRIES.IN},
+    {label: t(`countries.${COUNTRIES.PK}`), value: COUNTRIES.PK},
+    {label: t(`countries.${COUNTRIES.EG}`), value: COUNTRIES.EG},
   ];
   const [selectedCountry, setSelectedCountry] = useState(null);
   const dispatch = useDispatch();
@@ -26,11 +28,14 @@ const CountrySelect = props => {
 
   return (
     <FullScreenModal>
-      <View style={styles.lang}>
-        <Text style={styles.sTitle1}> {t('country')}</Text>
-
+      <AppBody>
+        <Text variant={'heading2'} color={theme.colors.primary}>
+          {' '}
+          {t('changeCountry')}
+        </Text>
+        <Spacer size={SpacerSizes.lg} />
         <FlatList
-          data={languages}
+          data={countries}
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
@@ -42,64 +47,38 @@ const CountrySelect = props => {
                   : styles.language
               }>
               <Text
-                style={
+                variant={'text1'}
+                color={
                   selectedCountry === item.value
-                    ? styles.selectedText
-                    : styles.text
+                    ? theme.colors.primary
+                    : theme.colors.text
                 }>
                 {item.label}
               </Text>
             </TouchableOpacity>
           )}
         />
-
-        <View style={styles.btns}>
-          <TouchableOpacity
-            style={{
-              width: 143,
-              height: 48,
-              borderWidth: 1,
-              borderRadius: 8,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderColor: theme.colors.primary,
-              borderStyle: 'solid',
-            }}>
-            <Text
-              style={{
-                fontStyle: 'normal',
-
-                color: theme.colors.primary,
-              }}>
-              {t('CANCEL')}
+        <Button mode={'outline'} onPress={() => onDismiss()}>
+          <View
+            flexDirection="row"
+            flexGrow={1}
+            justifyContent="center"
+            alignItems="center">
+            <Text color={theme.colors.primary} variant="text1">
+              {t('cancel')}
             </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              dispatch(CountryActions.selectCountry(selectedCountry));
-              onDismiss();
-            }}
-            style={{
-              width: 150,
-              height: 48,
-              borderWidth: 0.5,
-              borderRadius: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: theme.colors.primary,
-            }}>
-            <Text
-              style={{
-                color: theme.colors.surface,
-
-                fontStyle: 'normal',
-              }}>
-              {t('SAVE')}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+          </View>
+        </Button>
+        <Button
+          onPress={() => {
+            dispatch(CountryActions.selectCountry(selectedCountry));
+            onDismiss();
+          }}>
+          <Text color={theme.colors.surface} variant="text1">
+            {t('save')}
+          </Text>
+        </Button>
+      </AppBody>
     </FullScreenModal>
   );
 };

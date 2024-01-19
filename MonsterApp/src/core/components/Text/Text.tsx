@@ -16,6 +16,12 @@ const Text = props => {
           fontSize: 44,
           fontWeight: '600',
         };
+      case 'heading2':
+        return {
+          ...baseStyles,
+          fontSize: 36,
+          fontWeight: '600',
+        };
       case 'text1':
         return {
           ...baseStyles,

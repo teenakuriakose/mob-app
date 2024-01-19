@@ -32,15 +32,9 @@ const Dashboard = () => {
         onPress={() => {
           goBack();
         }}>
-        <View
-          flexDirection="row"
-          flexGrow={1}
-          justifyContent="center"
-          alignItems="center">
-          <Text color={theme.colors.primary} variant="text1">
-            {t('back')}
-          </Text>
-        </View>
+        <Text color={theme.colors.primary} variant="text1">
+          {t('back')}
+        </Text>
       </Button>
     </AppBody>
   );

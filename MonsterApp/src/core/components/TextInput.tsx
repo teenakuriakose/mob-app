@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
-import {TextInput as CoreTextInput, useTheme} from 'react-native-paper';
+import {
+  TextInput as CoreTextInput,
+  HelperText,
+  useTheme,
+} from 'react-native-paper';
 import {View} from 'react-native';
 import Text from './Text/Text';
 
@@ -30,9 +34,9 @@ const TextInput = props => {
           {...rest}
         />
         {error ? (
-          <Text type="error" color={theme.colors.error} visible={true}>
+          <HelperText type="error" visible={true}>
             {errorMessage}
-          </Text>
+          </HelperText>
         ) : null}
       </View>
     </View>

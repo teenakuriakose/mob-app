@@ -1,16 +1,26 @@
 {
     "translation": {
-        "welcome": "Welcome",
+        "welcome": "Welcome!",
         "login": "Login",
         "country": "Country",
         "username": "Username",
         "password": "Password",
         "register": "Sign up",
+        "save": "Save",
+        "cancel": "Cancel",
+        "changeLanguage": "Change Language",
+        "changeCountry": "Change Country",
         "back" : "Back",
         "languages": {
             "en": "English",
             "ar": "عربي",
             "hi": "हिंदी"
+        },
+        "countries": {
+            "AE": "United Arab Emirates",
+            "IN": "India",
+            "PK": "Pakistan",
+            "EG": "Egypt"
         },
         "errorMessage": {
             "IN": "Username must start with A and have 6 characters.",
@@ -18,5 +28,6 @@
             "PK": "Username must have at least 4 characters and contain a number",
             "EG": "Username must be 5 characters and can contain special characters"
         }
+
     }
 }

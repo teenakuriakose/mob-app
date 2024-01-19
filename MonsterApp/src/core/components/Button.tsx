@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button as PaperButton} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
 import {useTheme} from '../../theme';
 
@@ -42,7 +43,13 @@ const Button = (props: any) => {
 
   return (
     <PaperButton mode="contained" style={styles.buttonStyle} {...rest}>
-      {props.children}
+      <View
+        flexDirection="row"
+        flexGrow={1}
+        justifyContent="center"
+        alignItems="center">
+        {props.children}
+      </View>
     </PaperButton>
   );
 };
@@ -50,6 +57,7 @@ const Button = (props: any) => {
 const styles = StyleSheet.create({
   buttonStyle: {
     height: 60,
+    borderRadius: 20,
   },
 });
 

@@ -94,15 +94,9 @@ const SignIn = () => {
         onPress={() => {
           navigation.push(ROUTE_DASHBOARD);
         }}>
-        <View
-          flexDirection="row"
-          flexGrow={1}
-          justifyContent="center"
-          alignItems="center">
-          <Text color={theme.colors.surface} variant="text1">
-            {t('login')}
-          </Text>
-        </View>
+        <Text color={theme.colors.surface} variant="text1">
+          {t('login')}
+        </Text>
       </Button>
       <Button
         mode={'text'}
