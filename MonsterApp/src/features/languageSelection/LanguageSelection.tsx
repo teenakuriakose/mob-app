@@ -7,12 +7,12 @@ import {
   TouchableOpacity,
   I18nManager,
 } from 'react-native';
-import Text from '../../core/components/Text/Text';
+import Text from '../../core/components/Text';
 import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as LanguageActions from './store/actions';
 import {useTheme} from 'react-native-paper';
-import AppBody from '../../core/components/containers/AppBody';
+import AppBody from '../../core/components/AppBody';
 import FullScreenModal from '../../core/components/FullScreenModal';
 import RNRestart from 'react-native-restart';
 import {LANGUAGES, SpacerSizes, TEXT_VARIANT} from '../../core/constants';

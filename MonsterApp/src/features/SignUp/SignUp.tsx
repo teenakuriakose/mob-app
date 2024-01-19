@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import React, {useState} from 'react';
-import Text from '../../core/components/Text/Text';
+import Text from '../../core/components/Text';
 import {useTheme} from '../../theme/index';
 import {SpacerSizes} from '../../core/constants';
 import Spacer from '../../core/components/Spacer';
@@ -9,7 +9,7 @@ import {useTranslation} from 'react-i18next';
 import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {ROUTE_DASHBOARD} from '../../navigation/routes';
-import AppBody from '../../core/components/containers/AppBody';
+import AppBody from '../../core/components/AppBody';
 import {useCredentialsValidation} from '../../hooks/useCredentialsValidation';
 import {useSelector} from 'react-redux';
 

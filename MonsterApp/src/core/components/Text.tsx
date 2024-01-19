@@ -1,7 +1,7 @@
 import {Text as TextComponent, StyleSheet} from 'react-native';
 import React from 'react';
-import {withTheme} from '../../../theme';
-import {TEXT_VARIANT} from '../../constants';
+import {withTheme} from '../../theme';
+import {TEXT_VARIANT} from '../constants';
 
 const Text = props => {
   const {variant, children, color} = props;

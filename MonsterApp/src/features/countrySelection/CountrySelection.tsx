@@ -7,8 +7,8 @@ import * as CountryActions from './store/actions';
 import {useTheme} from 'react-native-paper';
 import FullScreenModal from '../../core/components/FullScreenModal';
 import {COUNTRIES, SpacerSizes} from '../../core/constants';
-import AppBody from '../../core/components/containers/AppBody';
-import Text from '../../core/components/Text/Text';
+import AppBody from '../../core/components/AppBody';
+import Text from '../../core/components/Text';
 import Button from '../../core/components/Button';
 import Spacer from '../../core/components/Spacer';
 
