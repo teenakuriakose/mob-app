@@ -28,8 +28,8 @@ const SignUp = () => {
     setPassword,
     passwordError,
     isPasswordValid,
-    handleUsernameBlur,
-    handlePasswordBlur,
+    handleUsernameFocus,
+    handlePasswordFocus,
   } = useCredentialsValidation(countrySelection.country, t);
 
   return (
@@ -45,7 +45,7 @@ const SignUp = () => {
         text={username}
         onChange={val => setUsername(val)}
         error={!!usernameError}
-        onBlur={handleUsernameBlur}
+        onFocus={handleUsernameFocus}
         errorMessage={usernameError || ''}
       />
       <Spacer size={SpacerSizes.md} />
@@ -53,7 +53,7 @@ const SignUp = () => {
         label={t('password')}
         secureTextEntry
         text={password}
-        onBlur={handlePasswordBlur}
+        onFocus={handlePasswordFocus}
         onChange={val => setPassword(val)}
         error={!!passwordError}
         errorMessage={passwordError || ''}

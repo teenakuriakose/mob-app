@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {Regex} from '../core/validationUtils/RegularExpressions';
+import {COUNTRIES} from '../core/constants';
 
 // Custom hook for username and password validation
 export const useCredentialsValidation = (countryCode, t) => {
@@ -22,28 +23,28 @@ export const useCredentialsValidation = (countryCode, t) => {
       // Validate based on the selected country code
       if (isTouched.username) {
         switch (countryCode) {
-          case 'AE':
+          case COUNTRIES.AE:
             // 5 Characters, alphanumeric
             regexp = new RegExp(Regex.COUNTRY_VALIDATION_AE);
             if (!regexp.test(trimmedUsername)) {
               errorMessage = t('errorMessage.AE');
             }
             break;
-          case 'IN':
+          case COUNTRIES.IN:
             // Must start with A and have 6 characters
             regexp = new RegExp(Regex.COUNTRY_VALIDATION_IN);
             if (!regexp.test(trimmedUsername)) {
               errorMessage = t('errorMessage.IN');
             }
             break;
-          case 'PK':
+          case COUNTRIES.PK:
             // Must have at least 4 characters, must contain a number
             regexp = new RegExp(Regex.COUNTRY_VALIDATION_PK);
             if (!regexp.test(trimmedUsername) || trimmedUsername.length < 4) {
               errorMessage = t('errorMessage.PK');
             }
             break;
-          case 'EG':
+          case COUNTRIES.EG:
             // Must be 5 characters, can contain special characters
             regexp = new RegExp(Regex.COUNTRY_VALIDATION_EG);
             if (!regexp.test(trimmedUsername)) {
@@ -87,9 +88,9 @@ export const useCredentialsValidation = (countryCode, t) => {
     setPassword,
     passwordError,
     isPasswordValid,
-    handleUsernameBlur: () =>
+    handleUsernameFocus: () =>
       setIsTouched(prevState => ({...prevState, username: true})),
-    handlePasswordBlur: () =>
+    handlePasswordFocus: () =>
       setIsTouched(prevState => ({...prevState, password: true})),
   };
 };

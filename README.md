@@ -17,40 +17,66 @@ These instructions will help you set up and run the MonsterApp on your local mac
 
 1. Clone the repository:
 
-```git clone https://github.com/teenakuriakose/mob-app.git```
+
+
+```bash
+git clone https://github.com/teenakuriakose/mob-app.git
+```
 
 2. Navigate to the project directory:
   
-   ```cd mob-app/MonsterApp```
+```bash
+cd mob-app/MonsterApp
+```
 
 3. Install dependencies: 
-   ```npm install```
+```bash
+npm install
+```
         or 
-    ```yarn install```
+```bash
+yarn install
+ ```
 
 ### Running the App
 
 1. To run the app on your local machine, use the following commands:
 
-```npm start```
+```bash
+npm start
+```
         or 
-```yarn start```
+```bash
+yarn start
+```
 
 2. Navigate to ios folder and install pods
 
-   ```cd mob-app/MonsterApp/ios```
-   ```pod install```
+```bash
+cd mob-app/MonsterApp/ios
+```
+```bash
+pod install
+```
 
 3. To run the app in iOS 
-   ```yarn ios``` 
+```bash
+yarn ios
+``` 
          or 
-   ```npm run ios```
+```bash
+npm run ios
+```
 4.  To run the app in Android
- ```yarn android``` 
+ ```bash
+ yarn android
+ ``` 
          or 
-   ```npm run android```
+```bash
+npm run android
+```
 
-5. Sample of the app
+### A look inside!
 
 ![Screen1](MonsterApp/src/assets/Screen1.png)
 ![Screen2](MonsterApp/src/assets/Screen2.png)
