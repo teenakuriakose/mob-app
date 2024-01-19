@@ -2,10 +2,6 @@
 
 MonsterApp is a mobile application developed for the users to scribble on the device explore various Monster-related activities in their region of choice. It is currently available in 4 regions - United Arab Emirates, India, Pakistan and Egypt. The Application also supports 3 different languages - English, Arabic and Hindi
 
-![Screen1](MonsterApp/src/assets/Screen1.png =50x100)
-![Screen2](MonsterApp/src/assets/Screen2.png =50x100)
-![Screen3](MonsterApp/src/assets/Screen3.png =50x100)
-![Screen4](MonsterApp/src/assets/Screen4.png =50x100)
 
 
 ## Getting Started
@@ -53,6 +49,13 @@ These instructions will help you set up and run the MonsterApp on your local mac
  ```yarn android``` 
          or 
    ```npm run android```
+
+5. Sample of the app
+
+![Screen1](MonsterApp/src/assets/Screen1.png)
+![Screen2](MonsterApp/src/assets/Screen2.png)
+![Screen3](MonsterApp/src/assets/Screen3.png)
+![Screen4](MonsterApp/src/assets/Screen4.png)
 
 
 
