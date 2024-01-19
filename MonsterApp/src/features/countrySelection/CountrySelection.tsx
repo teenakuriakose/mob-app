@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import * as CountryActions from './store/actions';
 import {useTheme} from 'react-native-paper';
 import FullScreenModal from '../../core/components/FullScreenModal';
-import {COUNTRIES, SpacerSizes} from '../../core/constants';
+import {COUNTRIES, SpacerSizes, TEXT_VARIANT} from '../../core/constants';
 import AppBody from '../../core/components/AppBody';
 import Text from '../../core/components/Text';
 import Button from '../../core/components/Button';
@@ -29,7 +29,7 @@ const CountrySelect = props => {
   return (
     <FullScreenModal>
       <AppBody>
-        <Text variant={'heading2'} color={theme.colors.primary}>
+        <Text variant={TEXT_VARIANT.HEADING_2} color={theme.colors.primary}>
           {' '}
           {t('changeCountry')}
         </Text>
@@ -47,7 +47,7 @@ const CountrySelect = props => {
                   : styles.language
               }>
               <Text
-                variant={'text1'}
+                variant={TEXT_VARIANT.TEXT_1}
                 color={
                   selectedCountry === item.value
                     ? theme.colors.primary
@@ -64,7 +64,7 @@ const CountrySelect = props => {
             flexGrow={1}
             justifyContent="center"
             alignItems="center">
-            <Text color={theme.colors.primary} variant="text1">
+            <Text color={theme.colors.primary} variant={TEXT_VARIANT.TEXT_1}>
               {t('cancel')}
             </Text>
           </View>
@@ -74,7 +74,7 @@ const CountrySelect = props => {
             dispatch(CountryActions.selectCountry(selectedCountry));
             onDismiss();
           }}>
-          <Text color={theme.colors.surface} variant="text1">
+          <Text color={theme.colors.surface} variant={TEXT_VARIANT.TEXT_1}>
             {t('save')}
           </Text>
         </Button>

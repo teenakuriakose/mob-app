@@ -4,7 +4,7 @@ import {useTheme} from '../../theme/index';
 import Button from './Button';
 import {useTranslation} from 'react-i18next';
 import Spacer from './Spacer';
-import {SpacerSizes} from '../constants';
+import {SpacerSizes, TEXT_VARIANT} from '../constants';
 import Text from './Text';
 import {SketchCanvas as CoreSketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 
@@ -47,7 +47,7 @@ const SketchCanvas = () => {
         onPress={() => {
           clearCanvas();
         }}>
-        <Text color={theme.colors.primary} variant="text1">
+        <Text color={theme.colors.primary} variant={TEXT_VARIANT.TEXT_1}>
           {t('clear')}
         </Text>
       </Button>

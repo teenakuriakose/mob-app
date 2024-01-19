@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 import {useTheme} from '../../theme';
 import Text from '../../core/components/Text';
 import Spacer from '../../core/components/Spacer';
-import {SpacerSizes} from '../../core/constants';
+import {SpacerSizes, TEXT_VARIANT} from '../../core/constants';
 import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import SketchCanvas from '../../core/components/SketchCanvas';
@@ -18,14 +18,14 @@ const Dashboard = () => {
   return (
     <AppBody>
       <View flexDirection="row" flexGrow={1} justifyContent="center">
-        <Text variant={'heading'} color={theme.colors.primary}>
+        <Text variant={TEXT_VARIANT.HEADING_1} color={theme.colors.primary}>
           {t('welcome')}
         </Text>
       </View>
 
       <Spacer size={SpacerSizes.md} />
       <View flexDirection="row" flexGrow={1} justifyContent="center">
-        <Text variant={'text1'} color={theme.colors.text}>
+        <Text variant={TEXT_VARIANT.TEXT_1} color={theme.colors.text}>
           {t('drawAMonster')}
         </Text>
       </View>
@@ -38,7 +38,7 @@ const Dashboard = () => {
         onPress={() => {
           goBack();
         }}>
-        <Text color={theme.colors.primary} variant="text1">
+        <Text color={theme.colors.primary} variant={TEXT_VARIANT.TEXT_1}>
           {t('back')}
         </Text>
       </Button>
