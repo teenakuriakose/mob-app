@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
-  Text,
   View,
   StyleSheet,
   FlatList,
   TouchableOpacity,
   I18nManager,
 } from 'react-native';
+import Text from '../../core/components/Text/Text';
 import i18next from 'i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import * as LanguageActions from './store/actions';
@@ -15,7 +15,9 @@ import {useTheme} from 'react-native-paper';
 import AppBody from '../../core/components/containers/AppBody';
 import FullScreenModal from '../../core/components/FullScreenModal';
 import RNRestart from 'react-native-restart';
-import {LANGUAGES} from '../../core/constants';
+import {LANGUAGES, SpacerSizes} from '../../core/constants';
+import Button from '../../core/components/Button';
+import Spacer from '../../core/components/Spacer';
 
 const LanguageSelect = props => {
   const {t} = useTranslation();
@@ -31,12 +33,17 @@ const LanguageSelect = props => {
   const {onDismiss} = props;
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const dispatch = useDispatch();
-  const languageState = useSelector(state => state.languageSelection.lang);
+
+  const styles = makeStyles(theme);
 
   return (
     <FullScreenModal>
-      <View style={styles.lang}>
-        <Text style={styles.sTitle1}> {t('login')}</Text>
+      <AppBody>
+        <Text variant={'heading2'} color={theme.colors.primary}>
+          {' '}
+          {t('changeLanguage')}
+        </Text>
+        <Spacer size={SpacerSizes.lg} />
 
         <FlatList
           data={languages}
@@ -51,10 +58,11 @@ const LanguageSelect = props => {
                   : styles.language
               }>
               <Text
-                style={
+                variant={'text1'}
+                color={
                   selectedLanguage === item.value
-                    ? styles.selectedText
-                    : styles.text
+                    ? theme.colors.primary
+                    : theme.colors.text
                 }>
                 {item.label}
               </Text>
@@ -62,144 +70,50 @@ const LanguageSelect = props => {
           )}
         />
 
-        <View style={styles.btns}>
-          <TouchableOpacity
-            style={{
-              width: 143,
-              height: 48,
-              borderWidth: 1,
-              borderRadius: 8,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderColor: theme.colors.primary,
-              borderStyle: 'solid',
-            }}
-            onPress={() => onDismiss()}>
-            <Text
-              style={{
-                fontStyle: 'normal',
-
-                color: theme.colors.primary,
-              }}>
-              {t('CANCEL')}
+        <Button mode={'outline'} onPress={() => onDismiss()}>
+          <View
+            flexDirection="row"
+            flexGrow={1}
+            justifyContent="center"
+            alignItems="center">
+            <Text color={theme.colors.primary} variant="text1">
+              {t('cancel')}
             </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              i18next.changeLanguage(selectedLanguage);
-              dispatch(LanguageActions.selectLanguage(selectedLanguage));
-              onDismiss();
-              I18nManager.forceRTL(selectedLanguage === 'ar');
-              setTimeout(() => {
-                RNRestart.Restart();
-              }, 1000);
-            }}
-            style={{
-              width: 150,
-              height: 48,
-              borderWidth: 0.5,
-              borderRadius: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: theme.colors.primary,
-            }}>
-            <Text
-              style={{
-                color: theme.colors.surface,
-
-                fontStyle: 'normal',
-              }}>
-              {t('SAVE')}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+          </View>
+        </Button>
+        <Button
+          onPress={() => {
+            i18next.changeLanguage(selectedLanguage);
+            dispatch(LanguageActions.selectLanguage(selectedLanguage));
+            onDismiss();
+            I18nManager.forceRTL(selectedLanguage === 'ar');
+            setTimeout(() => {
+              RNRestart.Restart();
+            }, 1000);
+          }}>
+          <Text color={theme.colors.surface} variant="text1">
+            {t('save')}
+          </Text>
+        </Button>
+      </AppBody>
     </FullScreenModal>
   );
 };
 
-const styles = StyleSheet.create({
-  lang: {
-    width: '100%',
-    backgroundColor: '#FFFFFF',
-
-    top: 40,
-    bottom: 466,
-    // border: 1px solid #E9EDF2;
-    borderWidth: 1,
-    borderColor: '#E9EDF2',
-    borderRadius: 16,
-    borderStyle: 'solid',
-  },
-  sTitle1: {
-    paddingTop: 34,
-
-    fontStyle: 'normal',
-
-    paddingLeft: 30,
-    fontSize: 14,
-    color: '#A8B4BF',
-  },
-  sTitle2: {
-    paddingTop: 20,
-    paddingBottom: 20,
-
-    fontStyle: 'normal',
-    paddingLeft: 30,
-    fontSize: 12,
-
-    color: '#576573',
-  },
-  languageItem: {
-    height: 50,
-
-    top: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 30,
-  },
-  texts: {
-    fontStyle: 'normal',
-    color: '#576573',
-
-    fontSize: 14,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-  btns: {
-    flexDirection: 'row',
-
-    width: '100%',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 20,
-  },
-
-  language: {
-    padding: 10,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  selectedLanguage: {
-    padding: 10,
-    backgroundColor: '#eee',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  text: {
-    fontSize: 14,
-    color: '#576573',
-  },
-  selectedText: {
-    fontSize: 14,
-    color: 'red',
-    fontWeight: 'bold',
-  },
-});
+const makeStyles = theme =>
+  StyleSheet.create({
+    language: {
+      padding: 10,
+      backgroundColor: '#fff',
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+    },
+    selectedLanguage: {
+      padding: 10,
+      backgroundColor: '#eee',
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+    },
+  });
 
 export default LanguageSelect;

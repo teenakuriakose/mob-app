@@ -38,15 +38,9 @@ const SignUp = () => {
         onPress={() => {
           navigate(ROUTE_DASHBOARD);
         }}>
-        <View
-          flexDirection="row"
-          flexGrow={1}
-          justifyContent="center"
-          alignItems="center">
-          <Text color={theme.colors.surface} variant="text1">
-            {t('register')}
-          </Text>
-        </View>
+        <Text color={theme.colors.surface} variant="text1">
+          {t('register')}
+        </Text>
       </Button>
       <Spacer size={SpacerSizes.md} />
       <Button
@@ -54,15 +48,9 @@ const SignUp = () => {
         onPress={() => {
           goBack();
         }}>
-        <View
-          flexDirection="row"
-          flexGrow={1}
-          justifyContent="center"
-          alignItems="center">
-          <Text color={theme.colors.primarys} variant="text1">
-            {t('back')}
-          </Text>
-        </View>
+        <Text color={theme.colors.primary} variant="text1">
+          {t('back')}
+        </Text>
       </Button>
     </AppBody>
   );

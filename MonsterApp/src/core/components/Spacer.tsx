@@ -23,8 +23,8 @@ const Spacer = (props: SpacerProps): JSX.Element => {
 const makeStyles = (vertical, horizontal, size) =>
   StyleSheet.create({
     spacerStyle: {
-      paddingHorizontal: horizontal ? size / 2 : '',
-      paddingVertical: vertical ? size / 2 : '',
+      paddingHorizontal: horizontal ? size / 2 : 0,
+      paddingVertical: vertical ? size / 2 : 0,
     },
   });
 

@@ -3,7 +3,7 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const AppBody = props => {
-  const {children} = props;
+  const {children, ...rest} = props;
   return (
     <SafeAreaView>
       <View style={styles.viewStyle}>{children}</View>
@@ -16,5 +16,6 @@ export default AppBody;
 const styles = StyleSheet.create({
   viewStyle: {
     paddingHorizontal: 24,
+    marginTop: 20,
   },
 });
