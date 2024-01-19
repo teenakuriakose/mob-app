@@ -91,6 +91,7 @@ const SignIn = () => {
       <Spacer size={SpacerSizes.md} />
 
       <Button
+        disabled={!(isUsernameValid && isPasswordValid && username && password)}
         onPress={() => {
           navigation.push(ROUTE_DASHBOARD);
         }}>

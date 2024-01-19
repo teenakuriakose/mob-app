@@ -16,7 +16,8 @@ import {useSelector} from 'react-redux';
 const SignUp = () => {
   const theme = useTheme();
   const {t} = useTranslation();
-  const {goBack, navigate} = useNavigation();
+  const navigation = useNavigation();
+  const {goBack} = navigation;
   const {countrySelection} = useSelector(state => state);
   const {
     username,
@@ -60,8 +61,9 @@ const SignUp = () => {
       <Spacer size={SpacerSizes.md} />
 
       <Button
+        disabled={!(isUsernameValid && isPasswordValid && username && password)}
         onPress={() => {
-          navigate(ROUTE_DASHBOARD);
+          navigation.replace(ROUTE_DASHBOARD);
         }}>
         <Text color={theme.colors.surface} variant="text1">
           {t('register')}

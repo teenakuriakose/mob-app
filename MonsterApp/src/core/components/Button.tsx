@@ -22,27 +22,15 @@ import {useTheme} from '../../theme';
  */
 
 const Button = (props: any) => {
-  const {
-    labelColorType = 'onPrimary',
-    themeContained,
-    themeLink,
-    themeTransparent,
-    transparent,
-    link,
-    primary,
-    small,
-    size,
-    padding = 8,
-    fontSize = 14,
-    disabled = false,
-    isRounded,
-    style = {},
-    ...rest
-  } = props;
+  const {disabled = false, ...rest} = props;
   const theme = useTheme();
 
   return (
-    <PaperButton mode="contained" style={styles.buttonStyle} {...rest}>
+    <PaperButton
+      mode="contained"
+      style={styles.buttonStyle}
+      disabled={disabled}
+      {...rest}>
       <View
         flexDirection="row"
         flexGrow={1}
