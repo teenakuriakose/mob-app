@@ -1,6 +1,7 @@
-import {View, Text as TextComponent, StyleSheet} from 'react-native';
+import {Text as TextComponent, StyleSheet} from 'react-native';
 import React from 'react';
 import {withTheme} from '../../../theme';
+import {TEXT_VARIANT} from '../../constants';
 
 const Text = props => {
   const {variant, children, color} = props;
@@ -10,25 +11,25 @@ const Text = props => {
       color: color,
     };
     switch (variant) {
-      case 'heading':
+      case TEXT_VARIANT.HEADING_1:
         return {
           ...baseStyles,
           fontSize: 44,
           fontWeight: '600',
         };
-      case 'heading2':
+      case TEXT_VARIANT.HEADING_2:
         return {
           ...baseStyles,
           fontSize: 36,
           fontWeight: '600',
         };
-      case 'text1':
+      case TEXT_VARIANT.TEXT_1:
         return {
           ...baseStyles,
           fontSize: 18,
           fontWeight: '600',
         };
-      case 'text2':
+      case TEXT_VARIANT.TEXT_2:
         return {
           ...baseStyles,
           fontSize: 14,

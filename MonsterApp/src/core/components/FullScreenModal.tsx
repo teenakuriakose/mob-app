@@ -2,6 +2,7 @@ import React from 'react';
 import {withTheme} from 'react-native-paper';
 import {Modal, View, StyleSheet} from 'react-native';
 
+
 const FullScreenModal = (props: any): JSX.Element => {
   return (
     <Modal coverScreen={true} {...props}>

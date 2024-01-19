@@ -60,6 +60,10 @@ pod install
 ```
 
 3. To run the app in iOS 
+   
+Open the ios workspace n Xcode and click on the run build button.
+
+        or
 ```bash
 yarn ios
 ``` 

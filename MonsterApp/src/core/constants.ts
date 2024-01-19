@@ -21,3 +21,10 @@ export enum COUNTRIES {
   PK = 'PK',
   EG = 'EG',
 }
+
+export enum TEXT_VARIANT {
+  HEADING_1 = 'heading',
+  HEADING_2 = 'heading2',
+  TEXT_1 = 'text1',
+  TEXT_2 = 'text2',
+}
