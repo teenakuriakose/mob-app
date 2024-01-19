@@ -27,7 +27,8 @@
             "IN": "Username must start with A and have 6 characters.",
             "AE": "Username must be 5 characters and alphanumeric.",
             "PK": "Username must have at least 4 characters and contain a number",
-            "EG": "Username must be 5 characters and can contain special characters"
+            "EG": "Username must be 5 characters and can contain special characters",
+            "password": "Password must be at least 8 characters."
         },
         "drawAMonster": "Draw a Monster"
     }
