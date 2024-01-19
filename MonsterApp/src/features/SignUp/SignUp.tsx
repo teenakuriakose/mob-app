@@ -10,12 +10,26 @@ import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {ROUTE_DASHBOARD} from '../../navigation/routes';
 import AppBody from '../../core/components/containers/AppBody';
+import {useCredentialsValidation} from '../../hooks/useCredentialsValidation';
+import {useSelector} from 'react-redux';
 
 const SignUp = () => {
   const theme = useTheme();
-  const [username, setUsername] = useState('');
   const {t} = useTranslation();
   const {goBack, navigate} = useNavigation();
+  const {countrySelection} = useSelector(state => state);
+  const {
+    username,
+    setUsername,
+    usernameError,
+    isUsernameValid,
+    password,
+    setPassword,
+    passwordError,
+    isPasswordValid,
+    handleUsernameBlur,
+    handlePasswordBlur,
+  } = useCredentialsValidation(countrySelection.country, t);
 
   return (
     <AppBody>
@@ -29,9 +43,20 @@ const SignUp = () => {
         label={t('username')}
         text={username}
         onChange={val => setUsername(val)}
+        error={!!usernameError}
+        onBlur={handleUsernameBlur}
+        errorMessage={usernameError || ''}
       />
       <Spacer size={SpacerSizes.md} />
-      <TextInput label={t('password')} secureTextEntry />
+      <TextInput
+        label={t('password')}
+        secureTextEntry
+        text={password}
+        onBlur={handlePasswordBlur}
+        onChange={val => setPassword(val)}
+        error={!!passwordError}
+        errorMessage={passwordError || ''}
+      />
       <Spacer size={SpacerSizes.md} />
 
       <Button
@@ -57,3 +82,5 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
