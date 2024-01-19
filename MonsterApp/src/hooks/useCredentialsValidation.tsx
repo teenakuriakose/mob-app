@@ -65,7 +65,7 @@ export const useCredentialsValidation = (countryCode, t) => {
 
       if (isTouched.password) {
         if (trimmedPassword.length < 8) {
-          errorMessage = 'Password must be at least 8 characters.';
+          errorMessage = t('errorMessage.password');
         } else {
           errorMessage = '';
         }

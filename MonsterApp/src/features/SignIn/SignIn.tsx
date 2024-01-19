@@ -1,17 +1,17 @@
 import {View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import AppBody from '../../core/components/containers/AppBody';
-import Text from '../../core/components/Text/Text';
+import AppBody from '../../core/components/AppBody';
+import Text from '../../core/components/Text';
 import {useTheme} from '../../theme';
 import {useTranslation} from 'react-i18next';
 import Icon from '../../core/components/Icon';
 import {useSelector} from 'react-redux';
-import CountrySelect from '../countrySelection/CountrySelection';
-import LanguageSelect from '../languageSelection/LanguageSelection';
-import SvgMonster from '../icons/SvgMonster';
+import CountrySelect from '../CountrySelection/CountrySelection';
+import LanguageSelect from '../LanguageSelection/LanguageSelection';
+import SvgMonster from '../../core/icons/SvgMonster';
 import TextInput from '../../core/components/TextInput';
 import Spacer from '../../core/components/Spacer';
-import {SpacerSizes} from '../../core/constants';
+import {SpacerSizes, TEXT_VARIANT} from '../../core/constants';
 import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {ROUTE_DASHBOARD, ROUTE_SIGN_UP} from '../../navigation/routes';
@@ -64,7 +64,7 @@ const SignIn = () => {
         <SvgMonster color={theme.colors.primary} width={200} height={200} />
       </View>
       <View flexDirection="row" flexGrow={1} justifyContent="center">
-        <Text variant={'heading'} color={theme.colors.primary}>
+        <Text variant={TEXT_VARIANT.HEADING_1} color={theme.colors.primary}>
           {t('welcome')}
         </Text>
       </View>
@@ -94,7 +94,7 @@ const SignIn = () => {
         onPress={() => {
           navigation.push(ROUTE_DASHBOARD);
         }}>
-        <Text color={theme.colors.surface} variant="text1">
+        <Text color={theme.colors.surface} variant={TEXT_VARIANT.TEXT_1}>
           {t('login')}
         </Text>
       </Button>
@@ -103,7 +103,7 @@ const SignIn = () => {
         onPress={() => {
           navigation.push(ROUTE_SIGN_UP);
         }}>
-        <Text color={theme.colors.primary} variant="text1">
+        <Text color={theme.colors.primary} variant={TEXT_VARIANT.TEXT_1}>
           {t('register')}
         </Text>
       </Button>

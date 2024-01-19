@@ -1,15 +1,15 @@
 import {View} from 'react-native';
 import React, {useState} from 'react';
-import Text from '../../core/components/Text/Text';
+import Text from '../../core/components/Text';
 import {useTheme} from '../../theme/index';
-import {SpacerSizes} from '../../core/constants';
+import {SpacerSizes, TEXT_VARIANT} from '../../core/constants';
 import Spacer from '../../core/components/Spacer';
 import TextInput from '../../core/components/TextInput';
 import {useTranslation} from 'react-i18next';
 import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {ROUTE_DASHBOARD} from '../../navigation/routes';
-import AppBody from '../../core/components/containers/AppBody';
+import AppBody from '../../core/components/AppBody';
 import {useCredentialsValidation} from '../../hooks/useCredentialsValidation';
 import {useSelector} from 'react-redux';
 
@@ -35,7 +35,7 @@ const SignUp = () => {
   return (
     <AppBody>
       <View flexDirection="row" flexGrow={1} justifyContent="center">
-        <Text variant={'heading'} color={theme.colors.primary}>
+        <Text variant={TEXT_VARIANT.HEADING_1} color={theme.colors.primary}>
           {t('register')}
         </Text>
       </View>
@@ -65,7 +65,7 @@ const SignUp = () => {
         onPress={() => {
           navigation.replace(ROUTE_DASHBOARD);
         }}>
-        <Text color={theme.colors.surface} variant="text1">
+        <Text color={theme.colors.surface} variant={TEXT_VARIANT.TEXT_1}>
           {t('register')}
         </Text>
       </Button>
@@ -75,7 +75,7 @@ const SignUp = () => {
         onPress={() => {
           goBack();
         }}>
-        <Text color={theme.colors.primary} variant="text1">
+        <Text color={theme.colors.primary} variant={TEXT_VARIANT.TEXT_1}>
           {t('back')}
         </Text>
       </Button>

@@ -45,7 +45,7 @@ yarn install
 ```bash
 npm start
 ```
-        or 
+or 
 ```bash
 yarn start
 ```
@@ -63,11 +63,12 @@ pod install
    
 Open the ios workspace n Xcode and click on the run build button.
 
-        or
+or
+        
 ```bash
 yarn ios
 ``` 
-         or 
+ or 
 ```bash
 npm run ios
 ```
@@ -75,7 +76,7 @@ npm run ios
  ```bash
  yarn android
  ``` 
-         or 
+or 
 ```bash
 npm run android
 ```
@@ -86,7 +87,6 @@ npm run android
 ![Screen2](MonsterApp/src/assets/Screen2.png)
 ![Screen3](MonsterApp/src/assets/Screen3.png)
 ![Screen4](MonsterApp/src/assets/Screen4.png)
-
 
 
 

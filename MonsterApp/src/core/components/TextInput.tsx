@@ -5,7 +5,7 @@ import {
   useTheme,
 } from 'react-native-paper';
 import {View} from 'react-native';
-import Text from './Text/Text';
+import Text from './Text';
 
 const TextInput = props => {
   const {
