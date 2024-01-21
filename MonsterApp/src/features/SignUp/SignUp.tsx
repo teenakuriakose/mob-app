@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Text from '../../core/components/Text';
 import {useTheme} from '../../theme/index';
 import {SpacerSizes, TEXT_VARIANT} from '../../core/constants';
@@ -11,14 +11,17 @@ import {useNavigation} from '@react-navigation/native';
 import {ROUTE_DASHBOARD} from '../../navigation/routes';
 import AppBody from '../../core/components/AppBody';
 import {useCredentialsValidation} from '../../hooks/useCredentialsValidation';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {signUp} from './store/actions';
 
 const SignUp = () => {
   const theme = useTheme();
   const {t} = useTranslation();
   const navigation = useNavigation();
   const {goBack} = navigation;
-  const {countrySelection} = useSelector(state => state);
+  const dispatch = useDispatch();
+  const {countrySelection, createUser} = useSelector(state => state);
+  const {loading, response, error} = createUser || {};
   const {
     username,
     setUsername,
@@ -31,6 +34,12 @@ const SignUp = () => {
     handleUsernameFocus,
     handlePasswordFocus,
   } = useCredentialsValidation(countrySelection.country, t);
+
+  useEffect(() => {
+    if (response) {
+      navigation.replace(ROUTE_DASHBOARD);
+    }
+  }, [response]);
 
   return (
     <AppBody>
@@ -63,7 +72,9 @@ const SignUp = () => {
       <Button
         disabled={!(isUsernameValid && isPasswordValid && username && password)}
         onPress={() => {
-          navigation.replace(ROUTE_DASHBOARD);
+          dispatch(
+            signUp({username, password, country: countrySelection.country}),
+          );
         }}>
         <Text color={theme.colors.surface} variant={TEXT_VARIANT.TEXT_1}>
           {t('register')}
