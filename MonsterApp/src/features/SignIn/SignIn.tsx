@@ -1,11 +1,11 @@
 import {View, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppBody from '../../core/components/AppBody';
 import Text from '../../core/components/Text';
 import {useTheme} from '../../theme';
 import {useTranslation} from 'react-i18next';
 import Icon from '../../core/components/Icon';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import CountrySelect from '../CountrySelection/CountrySelection';
 import LanguageSelect from '../LanguageSelection/LanguageSelection';
 import SvgMonster from '../../core/icons/SvgMonster';
@@ -16,11 +16,16 @@ import Button from '../../core/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {ROUTE_DASHBOARD, ROUTE_SIGN_UP} from '../../navigation/routes';
 import {useCredentialsValidation} from '../../hooks/useCredentialsValidation';
+import {signIn} from './store/actions';
 
 const SignIn = () => {
   const theme = useTheme();
   const {t} = useTranslation();
-  const {languageSelection, countrySelection} = useSelector(state => state);
+  const {languageSelection, countrySelection, fetchUser} = useSelector(
+    state => state,
+  );
+  const {loading, response, error} = fetchUser || {};
+  const dispatch = useDispatch();
   const [countryModal, setCountryModal] = useState(false);
   const [languageModal, setLanguageModal] = useState(false);
   const navigation = useNavigation();
@@ -40,6 +45,12 @@ const SignIn = () => {
   const onCountryChangeSelect = () => {
     setCountryModal(true);
   };
+
+  useEffect(() => {
+    if (response) {
+      navigation.push(ROUTE_DASHBOARD);
+    }
+  }, [response]);
 
   return (
     <AppBody>
@@ -92,7 +103,7 @@ const SignIn = () => {
       <Button
         disabled={!(isUsernameValid && isPasswordValid && username && password)}
         onPress={() => {
-          navigation.push(ROUTE_DASHBOARD);
+          dispatch(signIn({username, password}));
         }}>
         <Text color={theme.colors.surface} variant={TEXT_VARIANT.TEXT_1}>
           {t('login')}

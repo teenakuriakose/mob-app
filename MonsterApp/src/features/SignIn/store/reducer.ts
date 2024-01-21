@@ -1,12 +1,13 @@
 import * as Actions from './actions';
 
 const initialState: any = {
-  isLoading: false,
-  entitlements: {},
+  loading: false,
+  response: null,
+  error: null,
 };
 
 /**
- * @func Reducer for SignIn
+ * @func Reducer for SignUp
  * @param state
  * @param action
  */
@@ -15,20 +16,27 @@ export default function (state = initialState, action: any) {
     case Actions.SIGNIN_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        loading: true,
+        response: null,
+        error: null,
       };
     case Actions.SIGNIN_SUCCESS:
-      const {entitlements = {}} = action.payload;
       return {
         ...state,
-        entitlements,
-        isLoading: false,
+        loading: false,
+        response: action.payload,
+        error: null,
       };
     case Actions.SIGNIN_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        loading: false,
+        response: null,
         error: action.payload,
+      };
+    case Actions.CLEAR_SIGNIN:
+      return {
+        ...initialState,
       };
     default:
       return state;

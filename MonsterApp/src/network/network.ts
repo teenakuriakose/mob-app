@@ -9,5 +9,6 @@ export const AxiosInstance = axios.create({
 });
 
 export const makeNetworkCall = (requestConfig: AxiosRequestConfig) => {
+  console.log('network', requestConfig);
   return AxiosInstance.request(requestConfig);
 };
