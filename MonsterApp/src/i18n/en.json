@@ -1,35 +1,37 @@
 {
     "translation": {
-        "welcome": "Welcome!",
-        "login": "Login",
-        "country": "Country",
-        "username": "Username",
-        "password": "Password",
-        "register": "Sign up",
-        "save": "Save",
-        "cancel": "Cancel",
-        "clear": "Clear",
-        "changeLanguage": "Change Language",
-        "changeCountry": "Change Country",
-        "back" : "Back",
-        "languages": {
-            "en": "English",
-            "ar": "عربي",
-            "hi": "हिंदी"
-        },
-        "countries": {
-            "AE": "United Arab Emirates",
-            "IN": "India",
-            "PK": "Pakistan",
-            "EG": "Egypt"
-        },
-        "errorMessage": {
-            "IN": "Username must start with A and have 6 characters.",
-            "AE": "Username must be 5 characters and alphanumeric.",
-            "PK": "Username must have at least 4 characters and contain a number",
-            "EG": "Username must be 5 characters and can contain special characters",
-            "password": "Password must be at least 8 characters."
-        },
-        "drawAMonster": "Draw a Monster"
+      "welcome": "Welcome!",
+      "login": "Login",
+      "country": "Country",
+      "username": "Username",
+      "password": "Password",
+      "register": "Sign up",
+      "save": "Save",
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "changeLanguage": "Change Language",
+      "changeCountry": "Change Country",
+      "back": "Back",
+      "languages": {
+        "en": "English",
+        "ar": "عربي",
+        "hi": "हिंदी"
+      },
+      "countries": {
+        "AE": "United Arab Emirates",
+        "IN": "India",
+        "PK": "Pakistan",
+        "EG": "Egypt"
+      },
+      "errorMessage": {
+        "IN": "Username must start with A and have 6 characters.",
+        "AE": "Username must be 5 characters and alphanumeric.",
+        "PK": "Username must have at least 4 characters and contain a number",
+        "EG": "Username must be 5 characters and can contain special characters",
+        "password": "Password must be at least 8 characters.",
+        "invalidCredentials": "Invalid Credentials",
+        "invalidUsername": "Please enter a different username"
+      },
+      "drawAMonster": "Draw a Monster"
     }
 }

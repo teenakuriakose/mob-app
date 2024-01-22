@@ -13,28 +13,28 @@ const initialState: any = {
  */
 export default function (state = initialState, action: any) {
   switch (action.type) {
-    case Actions.SIGNIN_REQUEST:
+    case Actions.SIGNUP_REQUEST:
       return {
         ...state,
         loading: true,
         response: null,
         error: null,
       };
-    case Actions.SIGNIN_SUCCESS:
+    case Actions.SIGNUP_SUCCESS:
       return {
         ...state,
         loading: false,
         response: action.payload,
         error: null,
       };
-    case Actions.SIGNIN_FAILURE:
+    case Actions.SIGNUP_FAILURE:
       return {
         ...state,
         loading: false,
         response: null,
         error: action.payload,
       };
-    case Actions.CLEAR_SIGNIN:
+    case Actions.CLEAR_SIGNUP:
       return {
         ...initialState,
       };
