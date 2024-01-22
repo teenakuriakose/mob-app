@@ -115,7 +115,9 @@ const SignIn = () => {
               !(isUsernameValid && isPasswordValid && username && password)
             }
             onPress={() => {
-              dispatch(signIn({username, password}));
+              dispatch(
+                signIn({username, password, country: countrySelection.country}),
+              );
             }}>
             <Text color={theme.colors.surface} variant={TEXT_VARIANT.TEXT_1}>
               {t('login')}
